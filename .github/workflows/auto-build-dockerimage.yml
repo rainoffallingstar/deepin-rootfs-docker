@@ -21,7 +21,7 @@ jobs:
 
       - name: Run build.sh
         run: |
-          bash ./build.sh
+          sudo bash ./build.sh
       - name: Create tar file
         run: sudo tar -cf deepin-rootfs.tar -C /beige-rootfs . # 把根文件系统打包成一个tar文件
 
