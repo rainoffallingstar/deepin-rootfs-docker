@@ -8,6 +8,10 @@ RUN apt-get update && apt-get upgrade -y  \
 
 RUN rm -rf /tmp/download_packages
 
+# set env variables
+
+ENV PATH=$PATH:/usr/sbin/
+
 # Define default command.
 
 EXPOSE 80
