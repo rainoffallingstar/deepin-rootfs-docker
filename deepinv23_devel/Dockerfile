@@ -8,9 +8,13 @@ RUN apt-get update && apt-get upgrade -y  \
 
 RUN rm -rf /tmp/download_packages
 
+# set env variables
+
+ENV PATH=$PATH:/bin/bash
+
 # Define default command.
 
 EXPOSE 80
 EXPOSE 8787
 
-CMD ["/usr/sbin/init"]
+CMD ["/bin/bash"]
