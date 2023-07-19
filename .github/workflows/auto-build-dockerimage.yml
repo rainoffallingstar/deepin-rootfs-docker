@@ -25,7 +25,7 @@ jobs:
       - name: Create/Download tar file
         run: |
          wget -O deepin.zip https://github.com/deepin-community/deepin-rootfs/releases/download/v1.0.0-x86/deepin.zip
-         unzip -r deepin.zip .
+         unzip deepin.zip
         # sudo tar -cf deepin-rootfs.tar -C /beige-rootfs . # 把根文件系统打包成一个tar文件
 
       - name: Login to Docker Hub
