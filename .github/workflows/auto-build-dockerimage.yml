@@ -1,0 +1,47 @@
+name: Docker 
+
+on:
+  push:
+    branches: [ master ]
+
+env:
+  REGISTRY: docker.io
+  IMAGE_NAME: deepinv23
+
+jobs:
+  docker:
+    runs-on: ubuntu-latest
+    permissions:
+      packages: write
+      contents: read
+    steps:
+      
+      - name: Check Out Repo 
+        uses: actions/checkout@v3
+
+      - name: Run build.sh
+        run: |
+          bash ./build.sh
+      - name: Create tar file
+        run: sudo tar -cf deepin-rootfs.tar -C /beige-rootfs . # 把根文件系统打包成一个tar文件
+
+      - name: Login to Docker Hub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKER_HUB_USERNAME }}
+          password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
+
+      - name: Set up Docker Buildx
+        id: buildx
+        uses: docker/setup-buildx-action@v1
+
+      - name: Build and push
+        id: docker_build
+        uses: docker/build-push-action@v2
+        with:
+          context: ./deepinv23_devel
+          push: true
+          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/deepinv23:base
+    
+      
+      
