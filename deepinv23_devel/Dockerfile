@@ -17,4 +17,4 @@ ENV PATH=$PATH:/bin/bash
 EXPOSE 80
 EXPOSE 8787
 
-CMD ["/bin/bash"]
+CMD ["/bin/bash"，"-c", "while true; do sleep 1000; done"]
