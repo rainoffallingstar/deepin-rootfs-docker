@@ -24,12 +24,8 @@ jobs:
        #   sudo bash ./build.sh
       - name: Create/Download tar file
         run: |
-         wget -O deepin.zip https://github.com/deepin-community/deepin-rootfs/releases/download/v1.0.0-arm/deepin.zip
-         ls
-         unzip -o -d deepinv23_devel/ deepin.zip
-         ls
-        # sudo tar -cf deepin-rootfs.tar -C /beige-rootfs . # 把根文件系统打包成一个tar文件
-
+        wget -O deepinv23_devel/deepin-rootfs.tar https://github.com/deepin-community/deepin-rootfs/releases/download/v1.2.0/deepin-rootfs-arm64.tar.gz
+       
       - name: Login to Docker Hub
         uses: docker/login-action@v2
         with:
